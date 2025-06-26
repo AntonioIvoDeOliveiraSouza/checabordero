@@ -18,7 +18,7 @@ Facilitar o acesso aos dados de competições organizadas pela FFP, como:
 
 ## 🔧 Tecnologias Utilizadas
 
-- [Python 3.x](https://www.python.org/)
+- [Python 3.11](https://www.python.org/)
 - [FastAPI](https://fastapi.tiangolo.com/)
 - [Playwright](https://playwright.dev/python/)
 - [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/)
