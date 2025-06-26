@@ -31,7 +31,7 @@ Facilitar o acesso aos dados de competições organizadas pela FFP, como:
 - `main.py` → Arquivo principal da API (endpoints)
 - `scraper.py` → Módulo que faz o scraping de dados e baixa PDFs
 - `coletar_partidas.py` → Script auxiliar que coleta partidas via Playwright
-- `requirements.txt` → Dependências do projeto (recomenda-se criar um)
+- `requirements.txt` → Dependências do projeto
 
 ---
 
