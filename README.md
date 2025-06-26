@@ -51,7 +51,7 @@ Facilitar o acesso aos dados de competições organizadas pela FFP, como:
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seuusuario/checa-bordero.git
+   git clone https://github.com/AntonioIvoDeOliveiraSouza/checa-bordero.git
    cd checa-bordero
 
 2. Crie e ative um ambiente virtual:
