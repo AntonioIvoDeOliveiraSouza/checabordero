@@ -53,22 +53,26 @@ Facilitar o acesso aos dados de competições organizadas pela FFP, como:
    ```bash
    git clone https://github.com/AntonioIvoDeOliveiraSouza/checa-bordero.git
    cd checa-bordero
+   ```
 
 2. Crie e ative um ambiente virtual:
   ```bash
   python -m venv venv
   source venv/bin/activate  # Linux/macOS
   .\venv\Scripts\activate   # Windows
+   ```
 
 3. Instale as dependências:
   ```bash
   pip install -r requirements.txt
+  ```
 
 4. Execute a API:
   ```bash
   uvicorn main:app --reload
+   ```
 
 5. Acesse a documentação interativa:
   ```bash
   http://localhost:8000/docs
-
+  ```
