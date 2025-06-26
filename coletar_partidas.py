@@ -9,7 +9,11 @@ def get_partidas(idcampeonato: str, id_fase: str):
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
-        page = browser.new_page()
+        page = browser.new_page(
+            extra_http_headers={
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
+            }
+        )
         page.goto(URL_FASE, timeout=60000)
         page.wait_for_selector("#jogos", timeout=10000)
         content = page.content()
