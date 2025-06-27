@@ -1,12 +1,11 @@
 #O QUE JÁ TEMOS:
 # Uma API que captura pdfs do bordero da FFP
 # O QUE PODEMOS FAZER:
-# Rodar pelo próprio terminal
 # Receber o pdf e também extrair o texto de lá.
 # Fornecer dados das outras federações também.#
 
 from fastapi import FastAPI
-from scraper import get_campeonato, get_tabelas, baixar_bordero
+from scraper import get_campeonato, get_tabelas, get_bordero
 import subprocess
 import json
 
@@ -67,4 +66,4 @@ def listar_partidas(idcampeonato: str, id_fase: str):
 
 @app.get('/bordero')
 def show_bordero(id_partida:str):
-    return baixar_bordero(id_partida)
+    return get_bordero(id_partida)
