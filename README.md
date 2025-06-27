@@ -76,3 +76,32 @@ Facilitar o acesso aos dados de competições organizadas pela FFP, como:
   ```bash
   http://localhost:8000/docs
   ```
+
+A API pode ser acessada pela documentação no FastAPI acima, ou pelo próprio terminal, onde verá a documentação abaixo:
+
+## COMANDOS
+
+1. Para iniciar o projeto:
+  ```bash
+  python scraper.py
+  ```
+
+2. Para acessar os campeonatos disponíveis:
+  ```bash
+  python scraper.py get_campeonato
+  ```
+
+3. Para acessar as fases do campeonato:
+  ```bash
+  python scraper.py get_tabelas <id_campeonato>
+  ```
+
+4. Para acessar as partidas do campeonato:
+  ```bash
+  python coletar_partidas.py coletar_partidas <id_campeonato> <id_fase>
+  ```
+
+5. Para acessar os borderôs em pdf dos jogos:
+  ```bash
+  python scraper.py get_bordero <id_partidas>
+  ```
