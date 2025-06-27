@@ -1,7 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
+from requests.exceptions import SSLError
+import sys
+import json
 
 URL_BASE = "https://ffp-pi.com.br/competicoes"
+URL_COMPETICOES_MA = "https://www.futebolmaranhense.com.br/competicoes/" #URL Federação Maranhense - Permitir que eu busque mais de uma
 
 def get_campeonato(): #função de buscar competições
     r = requests.get(URL_BASE) #pega a url
@@ -17,7 +21,6 @@ def get_campeonato(): #função de buscar competições
                 "nome_competicao": nome,
                 "url_competicao": "https://ffp-pi.com.br" + href
             })
-
     return lista #lista de competições registradas
 
 
@@ -49,7 +52,7 @@ def get_tabelas(idcampeonato:str): #função de pegar partidas dentro das compet
     
     return fases
 
-def baixar_bordero(id_partida:str):
+def get_bordero(id_partida:str):
     URL_BORDERO = f"https://conteudo.cbf.com.br/federacoes/10/borderos/2025/{id_partida}b.pdf"
     try:
         headers = {
@@ -71,3 +74,34 @@ def baixar_bordero(id_partida:str):
     except Exception as e:
         print(f"❌ Erro inesperado ao tentar baixar o borderô: {e}")
         return {"erro": "Erro inesperado", "detalhes": str(e)}
+    
+if __name__ == "__main__":
+
+    if len(sys.argv) == 1:
+        print("API ChecaBordero v.0.1\nLink para Github:https://github.com/AntonioIvoDeOliveiraSouza/checabordero\n\nPara iniciar, digite:\npython scraper.py get_campeonato")
+    elif len(sys.argv) >= 2:
+        comando = sys.argv[1]
+        if comando == "get_campeonato":
+            campeonatos = get_campeonato()
+            print(json.dumps(campeonatos, indent=2, ensure_ascii=False))
+        elif comando == "get_tabelas":
+            if len(sys.argv) != 3:
+                print("Uso para get_tabelas: python scraper.py get_tabelas <idcampeonato>")
+
+            else:
+                idcampeonato = sys.argv[2]
+                tabelas = get_tabelas(idcampeonato)
+                print(json.dumps(tabelas,indent=2,ensure_ascii=False))
+        elif comando == "get_partidas":
+            if len(sys.argv) !=3:
+                print("Uso: python coletar_partidas.py <idcampeonato> <id_fase>")
+        elif comando == "get_bordero":
+            if len(sys.argv) !=3:
+                print("Uso para get_bordero: python scraper.py get_bordero <id_partida>")
+            
+            else:
+                id_partida = sys.argv[2]
+                bordero = get_bordero(id_partida)
+        else:
+            print("❌ Comando desconhecido.")
+        
