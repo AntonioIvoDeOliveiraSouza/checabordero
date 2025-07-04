@@ -85,6 +85,11 @@ def extract_bordero(nome_arquivo:str):
         text = ""
         for pagina in leitor_pdf.pages:
             text += pagina.extract_text()
+    
+    arquivo_txt = open(f"bordero_{nome_arquivo}.txt", "x")
+    with open (f"bordero_{nome_arquivo}.txt", "w"):
+        arquivo_txt.write(text)
+
     return text
     
 if __name__ == "__main__":
