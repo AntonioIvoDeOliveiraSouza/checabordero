@@ -23,6 +23,7 @@ Facilitar o acesso aos dados de competições organizadas pela FFP, como:
 - [Playwright](https://playwright.dev/python/)
 - [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/)
 - [Requests](https://pypi.org/project/requests/)
+- [PyPDF2](https://pypi.org/project/PyPDF2/)
 
 ---
 
