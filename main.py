@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from scraper import get_campeonato, get_tabelas, get_bordero
+from fastapi.responses import PlainTextResponse
+from scraper import get_campeonato, get_tabelas, get_bordero, extract_bordero
 import subprocess
 import json
 
@@ -61,3 +62,7 @@ def listar_partidas(idcampeonato: str, id_fase: str):
 @app.get('/bordero')
 def show_bordero(id_partida:str):
     return get_bordero(id_partida)
+
+@app.get('/extract_bordero', response_class=PlainTextResponse)
+def extract_bordero_from_file(id_partida:str):
+    return extract_bordero(id_partida)

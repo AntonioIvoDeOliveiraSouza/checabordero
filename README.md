@@ -103,5 +103,10 @@ A API pode ser acessada pela documentação no FastAPI acima, ou pelo próprio t
 
 5. Para acessar os borderôs em pdf dos jogos:
   ```bash
-  python scraper.py get_bordero <id_partidas>
+  python scraper.py get_bordero <id_partida>
+  ```
+
+6. Para ler os dados dos borderôs no próprio terminal:
+  ```bash
+  python scraper.py extract_bordero <id_partida>
   ```

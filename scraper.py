@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from requests.exceptions import SSLError
 import sys
 import json
+import PyPDF2
 
 URL_BASE = "https://ffp-pi.com.br/competicoes"
 URL_COMPETICOES_MA = "https://www.futebolmaranhense.com.br/competicoes/" #URL Federação Maranhense - Permitir que eu busque mais de uma
@@ -74,6 +75,17 @@ def get_bordero(id_partida:str):
     except Exception as e:
         print(f"❌ Erro inesperado ao tentar baixar o borderô: {e}")
         return {"erro": "Erro inesperado", "detalhes": str(e)}
+
+def extract_bordero(nome_arquivo:str):
+    path_bordero = f"./bordero_{nome_arquivo}.pdf"
+    text = ""
+    
+    with open(path_bordero,"rb") as arquivo:
+        leitor_pdf = PyPDF2.PdfReader(arquivo)
+        text = ""
+        for pagina in leitor_pdf.pages:
+            text += pagina.extract_text()
+    return text
     
 if __name__ == "__main__":
 
@@ -102,6 +114,13 @@ if __name__ == "__main__":
             else:
                 id_partida = sys.argv[2]
                 bordero = get_bordero(id_partida)
+        elif comando == "extract_bordero":
+            if len(sys.argv) !=3:
+                print("Uso para extract_bordero: python scraper.py extract_bordero <id_partida>")
+            else:
+                id_partida = sys.argv[2]
+                text = extract_bordero(id_partida)
+                print(text)
         else:
             print("❌ Comando desconhecido.")
         
