@@ -106,7 +106,7 @@ A API pode ser acessada pela documentação no FastAPI acima, ou pelo próprio t
   python scraper.py get_bordero <id_partida>
   ```
 
-6. Para ler os dados dos borderôs no próprio terminal:
+6. Para ler os dados dos borderôs no próprio terminal e criar txt:
   ```bash
   python scraper.py extract_bordero <id_partida>
   ```
